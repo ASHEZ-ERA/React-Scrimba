@@ -5,7 +5,7 @@ import data from './data'
 
 function App() {
   const travelLog = data.map((d) => {
-    return <Entry key={d.id} entry={d} />;
+    return <Entry key={d.id} {...d} />;
   })
 
   return (  

@@ -22,3 +22,15 @@ A.
 
 #state:
 #state refers to values that are managed by the component, similiar to variables declared inside a function. Any time you have changing values that should be saved/displayed, you'll likely be using state.
+
+#what is conditional rendering?
+#when we want to only sometimes display something on the page based on some kind of condition.
+
+@ when to use &&
+#when you need to either display something or not display something
+
+#when to use ternary
+#when to decide which 2 of the things to display
+
+#what if you need to decide > 2 options on what to display.
+#if..elseif..elseif..etc

@@ -1,4 +1,4 @@
-import chef from "./chef.png"
+import chef from "../assets/images/chef.png"
 
 function Header(){
     return(
