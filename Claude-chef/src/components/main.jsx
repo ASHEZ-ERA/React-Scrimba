@@ -1,23 +1,32 @@
 import React from "react";
+import Claude from "./ClaudeRecipe";
+import IngredientList from "./ingredientList";
 function Main() {
-  const [ingredient, SetNewIngredient] = React.useState([]);
+   //state management for when the button show recipe is clicked
+  const [recipeShown, setRecipeShown] = React.useState(false);
 
-  const ingredientList = ingredient.map((ingredient) => (
-    <li key={ingredient}>{ingredient}</li>
-  ));
-  // for on action of form
-  function addIngredient(formData) {
-    const newIngredient = formData.get("ingredient");
-
-    SetNewIngredient((prevIngredient) => [...prevIngredient, newIngredient]);
-
-    console.log(ingredientList);
+  function toggeleRecipe() {
+    setRecipeShown((prev) => !prev);
   }
-  // function render(formData){
-  // if(ingredient === 0 ){
-  //   return null
-  // }else{
-  //   return formData.get(<section />);
+  //state management of form
+  const [ingredient, SetNewIngredient] = React.useState([
+    "all the main spices",
+    "pasta",
+    "ground beef",
+    "tomato paste",
+  ]);
+ 
+  
+  // for on action on form
+      function addIngredient(formData) {
+        const newIngredient = formData.get("ingredient");
+
+        SetNewIngredient((prevIngredient) => [
+          ...prevIngredient,
+          newIngredient,
+        ]);
+      }
+  
 
   return (
     <main>
@@ -30,23 +39,8 @@ function Main() {
         ></input>
         <button>Add ingredient</button>
       </form>
-      {ingredient.length > 0 && (
-        <section>
-          <h2>Ingredients on hand</h2>
-          <ul className="ingredient-list" aria-label="polite">
-            {ingredientList}
-          </ul>
-          {ingredient.length > 3 && (
-            <div className="get-recipe-container">
-              <div>
-                <h3>Ready for a recipe?</h3>
-                <p>Generate a recipe from your list of ingredients</p>
-              </div>
-              <button>Get a recipe</button>
-            </div>
-          )}
-        </section>
-      )}
+      {IngredientList.length > 0 &&<IngredientList ingredient ={ingredient}  toggeleRecipe={toggeleRecipe}/>}
+      {recipeShown === true && <Claude />}
     </main>
   );
 }
