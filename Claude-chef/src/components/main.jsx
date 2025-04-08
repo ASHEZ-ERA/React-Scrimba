@@ -1,32 +1,28 @@
 import React from "react";
 import Claude from "./ClaudeRecipe";
 import IngredientList from "./ingredientList";
+import { getRecipeFromMistral } from "../ai";
 function Main() {
-   //state management for when the button show recipe is clicked
-  const [recipeShown, setRecipeShown] = React.useState(false);
+  //state management for when the button show recipe is clicked
+  const [recipe, setRecipe] = React.useState("");
 
-  function toggeleRecipe() {
-    setRecipeShown((prev) => !prev);
+  async function getRecipe() {
+    const recipeMarkdown = await getRecipeFromMistral(ingredient);
+
+    setRecipe(recipeMarkdown)
+    
   }
   //state management of form
   const [ingredient, SetNewIngredient] = React.useState([
-    "all the main spices",
-    "pasta",
-    "ground beef",
-    "tomato paste",
+    
   ]);
- 
-  
-  // for on action on form
-      function addIngredient(formData) {
-        const newIngredient = formData.get("ingredient");
 
-        SetNewIngredient((prevIngredient) => [
-          ...prevIngredient,
-          newIngredient,
-        ]);
-      }
-  
+  // for on action on form
+  function addIngredient(formData) {
+    const newIngredient = formData.get("ingredient");
+
+    SetNewIngredient((prevIngredient) => [...prevIngredient, newIngredient]);
+  }
 
   return (
     <main>
@@ -39,8 +35,10 @@ function Main() {
         ></input>
         <button>Add ingredient</button>
       </form>
-      {IngredientList.length > 0 &&<IngredientList ingredient ={ingredient}  toggeleRecipe={toggeleRecipe}/>}
-      {recipeShown === true && <Claude />}
+      {IngredientList.length > 0 && (
+        <IngredientList ingredient={ingredient} getRecipe={getRecipe} />
+      )}
+      {recipe && <Claude recipe={recipe}/>}
     </main>
   );
 }

@@ -34,3 +34,5 @@ A.
 
 #what if you need to decide > 2 options on what to display.
 #if..elseif..elseif..etc
+
+state: gives us a chance to maintain data between re renders and cause new re render in react so that we can follow the paradigm of react which is that the ui should be a functon of state

@@ -1,5 +1,3 @@
-import React from "react";
-import Claude from "./ClaudeRecipe";
 export default function IngredientList(props) {
   // creating based on ingredient array
   // this variable is not needed in the main so we can bring it up here
@@ -19,7 +17,7 @@ export default function IngredientList(props) {
             <h3>Ready for a recipe?</h3>
             <p>Generate a recipe from your list of ingredients</p>
           </div>
-          <button onClick={props.toggeleRecipe}>Get a recipe</button>
+          <button onClick={props.getRecipe}>Get a recipe</button>
         </div>
       )}
     </section>
