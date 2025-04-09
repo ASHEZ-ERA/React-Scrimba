@@ -22,3 +22,24 @@ A.
 
 #state:
 #state refers to values that are managed by the component, similiar to variables declared inside a function. Any time you have changing values that should be saved/displayed, you'll likely be using state.
+
+
+in what way are react components supposed to be pure functions?
+a componet when given some props should always return the same user interface, the same holds for giving the same state values it should always return the same user interface.
+also rendering the component or running that component function will never affect any outside system(everytime a state changes it adds a new item in the database)
+
+What is a 'side effect'? examples
+any code that effects or interacts with an outside system, even a GET request to an API is a side effect even though we are not making a change to that system, simply interacting with an outside system is called side effect. e.g, interacting with local storage, API, manual DOM manupilation, web socket.
+
+What is not considered a "side effect " in react, examples?
+
+Anything that react is in charge of e.g: maintaining state, keeping the UI in sync with rendering the DOM elements.
+
+When does react run your "useEffect"? when does it not run the effect function?
+As soon as the component renderes for the first time, on every re-render of the component(assuming no dependencies array)
+
+Will not run the useEffecct when the calues in the dependecies in the array stay the same between the re-renders
+
+How do you explain what the dependencies array is?
+it is way for react to know whether or not it should re-run the effect function.
+
