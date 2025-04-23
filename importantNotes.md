@@ -43,3 +43,10 @@ Will not run the useEffecct when the calues in the dependecies in the array stay
 How do you explain what the dependencies array is?
 it is way for react to know whether or not it should re-run the effect function.
 
+#
+useRef is used to let you access DOMnodes, have no re renders is mutable and lets you track state
+
+# 
+useRef holds mutable value or DOM refrence and useEffect runs code after the component renders. So when we want to interact eith the Dom (like focusing on an input, scrolling or measurinf size.) the element must be in the DOM first which happens after render, that is where useEffect comes in.
+
+we cannot use useEffect inisde useRef because useRef doesnt watch for changes or or render cycles, it is just a container 

@@ -2,7 +2,9 @@ import "./App.css";
 import Contact from "./components/contact";
 
 function App() {
+
   return (
+    //returned/rendered instances of contact component wherein passed hard coded properties of img,name,phone & email, could have dont and made a component and passed down this information as array of objects wherein keys are the names and values are the values assigned to the properties and then imported here and and mapped the array and returned an instance to give all the properties which where then taken by the contact component as props and called one instance of the contact here and returned the mapped array to render
     <div className="contacts">
       <Contact
         img="/images/photo1.jpg"
